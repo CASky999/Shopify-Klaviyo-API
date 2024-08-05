@@ -9,8 +9,11 @@ const KLAVIYO_API_KEY = 'pk_55a23396fb127f7bdc0bf61427bb772870';
 
 app.use(bodyParser.json());
 
+app.use(cors())
+
 app.post('/api/subscribe', async (req, res) => {
   const { email } = req.body;
+  console.log("email---", email);
   const profileData = {
     data: {
       type: 'profile',
