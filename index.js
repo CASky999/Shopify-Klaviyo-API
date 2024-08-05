@@ -20,20 +20,20 @@ app.post('/api/subscribe', async (req, res) => {
     }
   };
   
-//   try {
-//     const response = await axios.post('https://a.klaviyo.com/api/profiles/', profileData, {
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': `Klaviyo-API-Key ${KLAVIYO_API_KEY}`,
-//         'revision': '2024-07-15'
-//       }
-//     });
+  // try {
+  //   const response = await axios.post('https://a.klaviyo.com/api/profiles/', profileData, {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': `Klaviyo-API-Key ${KLAVIYO_API_KEY}`,
+  //       'revision': '2024-07-15'
+  //     }
+  //   });
 
-//     res.status(200).send(response.data);
-//   } catch (error) {
-//     res.status(error.response.status).send(error.response.data);
-//   }
-// });
+  //   res.status(200).send(response.data);
+  // } catch (error) {
+  //   res.status(error.response.status).send(error.response.data);
+  // }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
