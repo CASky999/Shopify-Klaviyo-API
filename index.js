@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const KLAVIYO_API_KEY = 'pk_55a23396fb127f7bdc0bf61427bb772870';
+
 app.use(bodyParser.json());
 
 app.post('/api/subscribe', async (req, res) => {
@@ -18,12 +20,13 @@ app.post('/api/subscribe', async (req, res) => {
       }
     }
   };
-
+  
   try {
     const response = await axios.post('https://a.klaviyo.com/api/profiles/', profileData, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Klaviyo-API-Key ${process.env.KLAVIYO_API_KEY}`
+        'Authorization': `Klaviyo-API-Key ${KLAVIYO_API_KEY}`,
+        'revision': '2024-07-15'
       }
     });
 
