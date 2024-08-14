@@ -6,7 +6,7 @@ var cors = require('cors')
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const KLAVIYO_API_KEY = 'pk_55a23396fb127f7bdc0bf61427bb772870';
+const KLAVIYO_API_KEY = 'pk_abee3e745673a437b554e27a9d6f8c4f07';
 const headers = 
 {
   'Content-Type': 'application/json',
