@@ -12,19 +12,12 @@ const headers =
 {
   'Content-Type': 'application/json',
   'Authorization': `Klaviyo-API-Key ${KLAVIYO_API_KEY}`,
-  'revision': '2024-07-15'
+  'revision': '2025-01-15'
 };
 
 app.use(bodyParser.json());
 
-const corsOptions = {
-    origin: "*", // Allowed origins
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization,revision",
-    credentials: true, // Enable cookies if needed
-};
-
-app.use(cors(corsOptions));
+app.use(cors);
 
 app.get("/healthy", async (req, res) => {
     res.status(200).json({ message: "OK"});
@@ -32,6 +25,7 @@ app.get("/healthy", async (req, res) => {
 
 app.post('/api/subscribe', async (req, res) => {
   const { email, listId } = req.body;
+  console.log("email:", email");
   const profileData = {
     data: {
       type: 'profile',
@@ -45,7 +39,7 @@ app.post('/api/subscribe', async (req, res) => {
     const response = await axios.post('https://a.klaviyo.com/api/profiles/', profileData, {
       headers: headers
     });
-
+    console.log("profile:", response);
     if(response?.data?.data?.id)
     {
       const listdata = {
@@ -58,6 +52,7 @@ app.post('/api/subscribe', async (req, res) => {
         const listResponse = await axios.post(`https://a.klaviyo.com/api/lists/${listId}/relationships/profiles/`, listdata, {
           headers: headers
         });
+        console.log("list:", listResponse);
         res.sendStatus(200);
       } catch(error) {
         res.sendStatus(404);
