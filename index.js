@@ -19,6 +19,10 @@ app.use(bodyParser.json());
 
 app.use(cors())
 
+app.get("/healthy", async (req, res) => {
+    res.status(200).json({ message: "OK"});
+});
+
 app.post('/api/subscribe', async (req, res) => {
   const { email, listId } = req.body;
   const profileData = {
