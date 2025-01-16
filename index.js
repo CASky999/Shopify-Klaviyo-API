@@ -17,7 +17,14 @@ const headers =
 
 app.use(bodyParser.json());
 
-app.use(cors())
+const corsOptions = {
+    origin: "*", // Allowed origins
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization,revision",
+    credentials: true, // Enable cookies if needed
+};
+
+app.use(cors(corsOptions));
 
 app.get("/healthy", async (req, res) => {
     res.status(200).json({ message: "OK"});
