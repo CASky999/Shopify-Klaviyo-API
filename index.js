@@ -25,7 +25,7 @@ app.get("/healthy", async (req, res) => {
 
 app.post('/api/subscribe', async (req, res) => {
   const { email, listId } = req.body;
-  console.log("email:", email");
+  console.log("email:", email);
   const profileData = {
     data: {
       type: 'profile',
